@@ -1,6 +1,7 @@
 package com.xworkz.project.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,12 @@ public class SignUpEntity implements Serializable {
 	private boolean newUser;
 	@Column(name = "PASSWORD")
 	private String password;
+	@Column(name = "FAIL_COUNT")
+	private int failCount;
+	@Column(name = "LAST_LOGIN")
+	private Date lastLogin;
+//	@Column(name = "STATUS")
+//	private int status;
 
 	public SignUpEntity() {
 		System.out.println(this.getClass().getSimpleName() + " object created");
@@ -86,11 +93,35 @@ public class SignUpEntity implements Serializable {
 		this.password = password;
 	}
 
+	public int getFailCount() {
+		return failCount;
+	}
+
+	public void setFailCount(int failCount) {
+		this.failCount = failCount;
+	}
+
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+
+	/*public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+*/
 	@Override
 	public String toString() {
 		return "SignUpEntity [firstName=" + firstName + ", lastName=" + lastName + ", countryCode=" + countryCode
 				+ ", mobileNo=" + mobileNo + ", emailId=" + emailId + ", newUser=" + newUser + ", password=" + password
-				+ "]";
+				+ ", failCount=" + failCount + ", lastLogin=" + lastLogin + "]";
 	}
 
 }

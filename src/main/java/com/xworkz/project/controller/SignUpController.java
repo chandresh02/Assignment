@@ -14,6 +14,7 @@ import com.xworkz.project.service.SignUpService;
 @Controller
 @RequestMapping("/")
 public class SignUpController {
+	String result = null;
 
 	@Autowired
 	private SignUpService signUpSrvice;
@@ -27,14 +28,14 @@ public class SignUpController {
 		System.out.println("signUpController method started");
 
 		try {
-			signUpSrvice.signUpServiceSave(signUpDTO);
+			String result = signUpSrvice.signUpServiceSave(signUpDTO);
 		} catch (ServiceException e) {
 			System.out.println("Exception raised in SignUpController: " + e.getMessage());
 			throw new ControllerException("EXcetion occurred in SignUpController: " + e.getMessage());
 		}
 
 		System.out.println("signUpController method end");
-		return new ModelAndView("Landing.jsp", "msg", "user created successfully");
+		return new ModelAndView("SignIn.jsp", "msg", result);
 	}
 
 }

@@ -60,5 +60,19 @@ public class DataValidation {
 			return false;
 		}
 	}
+	
+	
+	@SuppressWarnings("unused")
+	public boolean isValidNewPass(String NewPassword) {
+		if (!NewPassword.isEmpty() || NewPassword != null || (NewPassword.length() >= 4 && NewPassword.length() <= 8)) {
+			System.out.println("Valid Password..");
+			return true;
+		} else
+		{
+		   System.out.println("Invalid Pass...try Different..");
+			return false;
+		}
+
+	}
 
 }

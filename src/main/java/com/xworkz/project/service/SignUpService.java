@@ -17,6 +17,7 @@ import com.xworkz.project.util.RandomPasswordGenerator;
 
 @Service
 public class SignUpService {
+	String result = null;
 
 	@Autowired
 	private JavaMailSender mailSender;
@@ -31,7 +32,7 @@ public class SignUpService {
 		System.out.println(this.getClass().getSimpleName() + " object created");
 	}
 
-	public void signUpServiceSave(SignUpDTO signUpDTO) throws ServiceException {
+	public String signUpServiceSave(SignUpDTO signUpDTO) throws ServiceException {
 
 		System.out.println("signupservicesave started");
 
@@ -64,18 +65,20 @@ public class SignUpService {
 			String encryptPassword = Base64.getEncoder().encodeToString(randomPassword.getBytes());
 			System.out.println("encrypted password is::" + encryptPassword);
 
-			entity.setPassword(encryptPassword);
+			entity.setPassword(encryptPassword); 
+			System.out.println("entity is::::::" + entity);
 
 			try {
-				signUpDAO.signUpDAOSave(entity);
+				String result = signUpDAO.signUpDAOSave(entity);
 
 				SimpleMailMessage mailMessage = new SimpleMailMessage();
 				mailMessage.setTo(emailId);
 				mailMessage.setSubject("confirmation mail from assignment management");
 				mailMessage.setText("your account is created \n" + "please login by using \n" + "emallId:: \n" + emailId
-						+ "encryptPassword::" + encryptPassword);
+						+ "Password::" + randomPassword);
 				mailSender.send(mailMessage);
 
+				// return result;
 			} catch (DAOException e) {
 
 				System.out.println("Exception raised in SignUpService: " + e.getMessage());
@@ -85,6 +88,8 @@ public class SignUpService {
 
 		}
 		System.out.println("signupservicesave end");
+		// return null;
+		return result;
 
 	}
 

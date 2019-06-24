@@ -7,12 +7,16 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/19thor</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">vinay</property>	
+		<property name="hibernate.connection.password">vinay</property>
 		<property name="show_sql">true</property>
-<!-- 		<property name="hbm2ddl.auto">update</property>
- -->		
- <mapping class="com.xworkz.project.entity.SignUpEntity"/>
-		
-		
+		<!-- <property name="hbm2ddl.auto">update</property> -->
+		<mapping class="com.xworkz.project.entity.SignUpEntity" />
+		<mapping class="com.xworkz.project.entity.CreateAssignmentEntity" />
+		<mapping class="com.xworkz.project.entity.AssignAssignmentEntity" />
+		<mapping class="com.xworkz.project.entity.UploadAssignmentEntity" />
+
+
+
+
 	</session-factory>
 </hibernate-configuration>

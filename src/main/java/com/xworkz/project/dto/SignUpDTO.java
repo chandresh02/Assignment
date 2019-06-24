@@ -7,27 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "user_table")
 public class SignUpDTO implements Serializable {
-	@Column(name = "FIRST_NAME")
+
 	private String firstName;
-	@Column(name = "LAST_NAME")
 	private String lastName;
-	@Column(name = "COUNTRY_CODE")
 	private int countryCode;
-	@Column(name = "MOBILE_NO")
 	private long mobileNo;
-	@Id
-	@Column(name = "EMAIL_ID")
 	private String emailId;
-	@Column(name = "NEW_USER")
 	private boolean newUser;
-	@Column(name = "PASSWORD")
 	private String password;
 
 	public SignUpDTO()
-
 	{
 		System.out.println(this.getClass().getSimpleName() + " object created");
 	}

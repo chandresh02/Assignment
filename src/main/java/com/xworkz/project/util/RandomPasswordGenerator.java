@@ -23,4 +23,22 @@ public class RandomPasswordGenerator {
 		return randomPassword;
 	}
 
-}
+
+	public long generateRandomPin() {
+		
+		String randomNumber=RandomStringUtils.random(4,numbers);
+		
+		long pin=  Long.parseLong(randomNumber);
+		
+		return pin;
+	}
+	
+		
+		
+	}
+	
+	
+	
+	
+
+
